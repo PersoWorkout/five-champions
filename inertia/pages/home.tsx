@@ -1,6 +1,6 @@
 import { Head } from '@inertiajs/react'
 
-export default function Home(props: { version: number }) {
+export default function Home(props: { version: number; playersCount: string }) {
   return (
     <>
       <Head title="Homepage" />
@@ -12,6 +12,8 @@ export default function Home(props: { version: number }) {
           Learn more about AdonisJS and Inertia.js by visiting the{' '}
           <a href="https://docs.adonisjs.com/guides/inertia">AdonisJS documentation</a>.
         </span>
+
+        <span>Nb Players: {props.playersCount}</span>
       </div>
     </>
   )
