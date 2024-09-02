@@ -20,7 +20,8 @@ export default function Register() {
     <>
       <Head title="Register" />
 
-      <div>
+      <div className="container">
+        <h1>Register</h1>
         <form onSubmit={handleSubmit}>
           <FormInputGroup
             name="surname"

@@ -8,6 +8,11 @@ export interface CreatePlayerDTO {
   password: string
 }
 
+export interface EditPlayerDTO {
+  surname: string | null
+  email: string | null
+}
+
 @inject()
 export class AuthService {
   constructor(private readonly repository: PlayersRepository) {}
@@ -25,5 +30,20 @@ export class AuthService {
     const player = await Player.create(payload)
 
     return this.repository.insert(player)
+  }
+
+  async edit(playerId: string, payload: EditPlayerDTO) {
+    const user = await this.repository.getById(playerId)
+
+    if (!user) {
+      return null
+    }
+
+    if (payload.email) {
+      const existingEmail = await this.repository.getByEmail(payload.email)
+      if (existingEmail && String(existingEmail.id) !== playerId) return null
+    }
+
+    return this.repository.edit(user, payload)
   }
 }

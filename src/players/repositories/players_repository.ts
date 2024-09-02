@@ -1,3 +1,4 @@
+import { EditPlayerDTO } from '#src/players/services/auth_service'
 import Player from '#src/players/models/players'
 
 export default class PlayersRepository {
@@ -15,5 +16,20 @@ export default class PlayersRepository {
 
   getBySurname(surname: string) {
     return Player.findBy({ surname })
+  }
+
+  getById(id: string) {
+    return Player.find(id)
+  }
+
+  async edit(player: Player, payload: EditPlayerDTO) {
+    player.merge({
+      surname: payload.surname || player.surname,
+      email: payload.email || player.email,
+    })
+
+    await player.save()
+
+    return player
   }
 }

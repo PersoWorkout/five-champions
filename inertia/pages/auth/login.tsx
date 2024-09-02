@@ -18,7 +18,8 @@ export default function Login() {
     <>
       <Head title="Login" />
 
-      <div>
+      <div className="container">
+        <h1>Login</h1>
         <form onSubmit={handleSubmit}>
           <FormInputGroup
             name="email"
