@@ -9,12 +9,12 @@
 
 const RegisterController = () => import('#src/players/controllers/register_controller')
 
+import AllPlayersController from '#src/players/controllers/all_players_controller'
 import router from '@adonisjs/core/services/router'
-import db from '@adonisjs/lucid/services/db'
 
-router
-  .on('/')
-  .renderInertia('home', { version: 6, playersCount: await db.from('players').count('*') })
+router.on('/').renderInertia('home', { version: 6 })
 
 router.get('/register', [RegisterController, 'render'])
 router.post('/register', [RegisterController, 'handle'])
+
+router.get('/players/all', [AllPlayersController, 'render'])
