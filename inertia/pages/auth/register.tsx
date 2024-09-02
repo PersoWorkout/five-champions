@@ -1,4 +1,5 @@
 import { Head, useForm } from '@inertiajs/react'
+import { FormInputGroup } from '~/components/form/input_group'
 
 export default function Register() {
   const { data, setData, processing, post, errors } = useForm({
@@ -10,7 +11,7 @@ export default function Register() {
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    post('/register')
+    post('/auth/register')
   }
 
   return (
@@ -19,6 +20,24 @@ export default function Register() {
 
       <div>
         <form onSubmit={handleSubmit}>
+          <FormInputGroup
+            name="surname"
+            title="Surname"
+            inputType="text"
+            placeholder="User10"
+            value={data.surname}
+            onChange={(e) => setData('surname', e.target.value)}
+            error={errors.surname}
+          />
+          <FormInputGroup
+            name="surname"
+            title="Surname"
+            inputType="text"
+            placeholder="User10"
+            value={data.surname}
+            onChange={(e) => setData('surname', e.target.value)}
+            error={errors.surname}
+          />
           <div>
             <label htmlFor="surname">Surname</label>
             <input
