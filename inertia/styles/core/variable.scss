@@ -1,0 +1,49 @@
+:root {
+  --font-family: 'Satoshi-Medium', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+  /**
+      Text size
+      */
+  --text-h1: 56px;
+  --text-h2: 44px;
+  --text-h3: 36px;
+  --text-h4: 28px;
+  --text-h5: 24px;
+  --text-h6: 16px;
+  --text-xs: 12px;
+  --text-sm: 14px;
+  --text-base: 16px;
+  --text-lg: 18px;
+  --text-xl: 20px;
+
+  /**
+      Colors
+      */
+  --black: #000;
+  --white: #fff;
+  --gray-100: #cecccc;
+  --gray-300: #b1b1b1c9;
+  --gray-500: #7c7c7cc4;
+  --gray-700: #474747cb;
+  --gray-900: #2e2e2edc;
+
+  --navy-blue-500: #3c3842;
+  --navy-blue-800: #1e1c21;
+  --pastel-gray-300: #9eacbd;
+  --pastel-gray-500: #6c809a;
+  --pastel-gray-800: #425061;
+  --light-green-500: #d0fef5;
+  --light-green-800: #affded;
+  --pastel-pink-500: #ecb0e1;
+  --pastel-pink-800: #e38cd3;
+  --navy-pink-500: #d175a3;
+  --navy-pink-800: #c24785;
+
+  /**
+      Border: 
+      */
+  --radius-s: 5px;
+  --radius-l: 9px;
+}

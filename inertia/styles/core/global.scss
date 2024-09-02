@@ -1,0 +1,73 @@
+html,
+body {
+  height: 100dvh;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: var(--text-xl);
+  color: red;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  height: 100%;
+}
+
+input {
+  min-width: 200px;
+  padding: 2px 5px;
+  border: 1px solid var(--gray-500);
+  border-radius: var(--radius-s);
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+h1 {
+  font-size: var(--text-h1);
+  color: var(--pastel-gray-800);
+}
+
+h2 {
+  font-size: var(--text-h2);
+  color: var(--navy-blue-500);
+}
+
+h3 {
+  font-size: var(--text-h3);
+  color: var(--navy-blue-500);
+}
+
+h4 {
+  font-size: var(--text-h4);
+  color: var(--navy-blue-500);
+}
+
+h5 {
+  font-size: var(--text-h5);
+  color: var(--navy-blue-500);
+}
+
+h6 {
+  font-size: var(--text-h6);
+  color: var(--navy-blue-500);
+}
+
+.button-primary {
+  background-color: var(--navy-blue-200);
+  color: var(--white);
+  padding: 5px;
+  border: none;
+  border-radius: var(--radius-s);
+  cursor: pointer;
+
+  &:hover {
+    opacity: 80%;
+  }
+}
