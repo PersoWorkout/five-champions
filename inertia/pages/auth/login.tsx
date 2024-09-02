@@ -3,9 +3,10 @@ import { FormInputGroup } from '~/components/form/input_group'
 import { FormButton } from '~/components/form/ui/button'
 
 export default function Login() {
-  const { data, setData, processing, post, errors } = useForm({
+  const { data, setData, post, errors } = useForm({
     email: '',
     password: '',
+    message: '',
   })
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -40,6 +41,7 @@ export default function Login() {
           <FormButton name="login-button" className="button-primary">
             Login
           </FormButton>
+          <div>{errors.message && <span>{errors.message}</span>}</div>
         </form>
       </div>
     </>

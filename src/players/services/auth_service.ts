@@ -17,7 +17,13 @@ export class AuthService {
   }
 
   async create(payload: CreatePlayerDTO) {
+    const playerByEmail = await this.repository.getByEmail(payload.email)
+    if (playerByEmail) {
+      return null
+    }
+
     const player = await Player.create(payload)
+
     return this.repository.insert(player)
   }
 }

@@ -8,4 +8,12 @@ export default class PlayersRepository {
   insert(payload: Player) {
     return payload.save()
   }
+
+  getByEmail(email: string) {
+    return Player.findBy({ email })
+  }
+
+  getBySurname(surname: string) {
+    return Player.findBy({ surname })
+  }
 }
