@@ -17,7 +17,7 @@ import router from '@adonisjs/core/services/router'
 import { middleware } from './kernel.js'
 import EditPlayerController from '#src/players/controllers/edit_player_controller'
 
-router.on('/').renderInertia('home', { version: 6 })
+router.on('/').renderInertia('home', { version: 6 }).use(middleware.silent())
 
 router.get('/auth/register', [RegisterController, 'render'])
 router.post('/auth/register', [RegisterController, 'handle'])
