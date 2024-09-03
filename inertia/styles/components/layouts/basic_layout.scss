@@ -1,3 +1,17 @@
+header.page-header {
+  height: 95px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline: 15px;
+  background-color: var(--white);
+}
+
+footer.page-footer {
+  height: 95px;
+  background-color: var(--white);
+}
+
 .user-dropdown {
   width: 160px;
   font-size: var(--text-base);
