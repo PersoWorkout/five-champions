@@ -16,6 +16,7 @@ const GetCurrentPlayerController = () =>
 import router from '@adonisjs/core/services/router'
 import { middleware } from './kernel.js'
 import EditPlayerController from '#src/players/controllers/edit_player_controller'
+import LogoutController from '#src/players/controllers/logout_controller'
 
 router.on('/').renderInertia('home', { version: 6 }).use(middleware.silent())
 
@@ -24,6 +25,8 @@ router.post('/auth/register', [RegisterController, 'handle'])
 
 router.get('/auth/login', [LoginController, 'render'])
 router.post('/auth/login', [LoginController, 'handle'])
+
+router.post('/auth/logout', [LogoutController, 'handle'])
 
 router.get('auth/me', [GetCurrentPlayerController, 'render']).use(middleware.auth())
 router.put('players/edit', [EditPlayerController, 'handle']).use(middleware.auth())
