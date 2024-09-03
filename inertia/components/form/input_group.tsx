@@ -35,7 +35,7 @@ export function FormInputGroup({
           />
         </div>
 
-        {error && <small>{error}</small>}
+        {error && <small className="error">{error}</small>}
       </div>
     </>
   )

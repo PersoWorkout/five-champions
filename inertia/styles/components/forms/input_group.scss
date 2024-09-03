@@ -1,5 +1,11 @@
 .form-input-group-container {
   display: block;
+  text-align: left;
+
+  small {
+    display: inline-block;
+    max-width: 350px;
+  }
 }
 
 .form-input-group {
