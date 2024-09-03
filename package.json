@@ -28,7 +28,8 @@
     "#tests/*": "./tests/*.js",
     "#start/*": "./start/*.js",
     "#config/*": "./config/*.js",
-    "#src/players/*": "./src/players/*.js"
+    "#src/players/*": "./src/players/*.js",
+    "#src/groups/*": "./src/groups/*.js"
   },
   "devDependencies": {
     "@adonisjs/assembler": "^7.7.0",

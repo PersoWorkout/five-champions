@@ -11,7 +11,7 @@ const AuthFinder = withAuthFinder(() => hash.use('scrypt'), {
 
 export default class Player extends compose(BaseModel, AuthFinder) {
   @column({ isPrimary: true })
-  declare id: number
+  declare id: string
 
   @column()
   declare surname: string
