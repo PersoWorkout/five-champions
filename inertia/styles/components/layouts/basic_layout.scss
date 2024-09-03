@@ -1,0 +1,25 @@
+.user-dropdown {
+  color: var(--white);
+  width: 145px;
+  font-size: var(--text-base);
+
+  details > summary {
+    border: 1px solid var(--purple-500);
+    padding: 4px 7px;
+    border-radius: var(--radius-l);
+    background-color: var(--purple-500);
+  }
+  details > .user-dropdown-content {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    padding: 4px;
+    width: 145px;
+    border: 1px solid var(--purple-300);
+    border-radius: 5px;
+    text-align: center;
+    color: white;
+    background-color: var(--purple-300);
+    z-index: 2;
+  }
+}
