@@ -19,15 +19,16 @@ export default class RegisterController {
     return inertia.render('auth/register')
   }
 
-  async handle({ request, response, session }: HttpContext) {
+  async handle({ request, auth, response, session }: HttpContext) {
     const payload = await request.validateUsing(this.#validator)
 
     const player = await this.service.create(payload)
-
     if (!player) {
       session.flash('errors', { message: 'Invalid Request' })
       return response.redirect().back()
     }
+
+    await auth.use('web').login(player)
 
     response.redirect('/')
   }
