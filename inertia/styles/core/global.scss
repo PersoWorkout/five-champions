@@ -3,10 +3,13 @@ body {
   height: 100dvh;
 }
 
+#app {
+  height: 100%;
+}
+
 body {
   font-family: var(--font-family);
   font-size: var(--text-xl);
-  color: red;
 }
 
 main {
@@ -59,15 +62,25 @@ h6 {
   color: var(--navy-blue-500);
 }
 
-.button-primary {
-  background-color: var(--navy-blue-200);
-  color: var(--white);
-  padding: 5px;
-  border: none;
+button {
+  height: 35px;
+  width: 150px;
+  font-size: var(--text-base);
   border-radius: var(--radius-s);
+  border: none;
   cursor: pointer;
+  padding: 5px;
 
   &:hover {
     opacity: 80%;
   }
+}
+
+.button-primary {
+  background-color: var(--pastel-pink-900);
+  color: var(--white);
+}
+
+small.error {
+  color: var(--red);
 }

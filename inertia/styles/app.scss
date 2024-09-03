@@ -1,10 +1,10 @@
 /**
     Core
     */
-@import 'core/font';
-@import 'core/variable';
-@import 'core/reset';
-@import 'core/global';
+@import 'core/font.scss';
+@import 'core/variable.scss';
+@import 'core/reset.scss';
+@import 'core/global.scss';
 
 /**
         Layouts
@@ -13,6 +13,9 @@
 /**
         Components
         */
+@import 'components/forms/input_group.scss';
+@import 'components/card.scss';
+@import 'components/forms/form.scss';
 
 /**
         Pages

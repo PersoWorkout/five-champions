@@ -22,16 +22,21 @@ export function FormInputGroup({
   error,
 }: FormInputGroupProps) {
   return (
-    <div className="form-input-group">
-      <Label value={title} htmlFor={name} />
-      <Input
-        name={name}
-        type={inputType}
-        placeholder={placeholder}
-        value={value}
-        onChange={onChange}
-      />
-      {error && <small>{error}</small>}
-    </div>
+    <>
+      <div className="form-input-group-container">
+        <div className="form-input-group">
+          <Label value={title} htmlFor={name} />
+          <Input
+            name={name}
+            type={inputType}
+            placeholder={placeholder}
+            value={value}
+            onChange={onChange}
+          />
+        </div>
+
+        {error && <small>{error}</small>}
+      </div>
+    </>
   )
 }

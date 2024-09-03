@@ -18,33 +18,40 @@ export default function Login() {
     <>
       <Head title="Login" />
 
-      <div className="container">
-        <h1>Login</h1>
-        <form onSubmit={handleSubmit}>
-          <FormInputGroup
-            name="email"
-            title="Email"
-            inputType="email"
-            placeholder="user@example.com"
-            value={data.email}
-            onChange={(e) => setData('email', e.target.value)}
-            error={errors.email}
-          />
-          <FormInputGroup
-            name="password"
-            title="Password"
-            inputType="password"
-            placeholder="********"
-            value={data.password}
-            onChange={(e) => setData('password', e.target.value)}
-            error={errors.password}
-          />
-          <FormButton name="login-button" className="button-primary">
-            Login
-          </FormButton>
-          <div>{errors.message && <span>{errors.message}</span>}</div>
-        </form>
-      </div>
+      <main className="card-container">
+        <article className="card">
+          <header>
+            <img src="/public/assets/logo.png" alt="logo.png" />
+          </header>
+
+          <form onSubmit={handleSubmit} className="auth-form">
+            <section className="form-input-container">
+              <FormInputGroup
+                name="email"
+                title="Email"
+                inputType="email"
+                placeholder="user@example.com"
+                value={data.email}
+                onChange={(e) => setData('email', e.target.value)}
+                error={errors.email}
+              />
+              <FormInputGroup
+                name="password"
+                title="Password"
+                inputType="password"
+                placeholder="********"
+                value={data.password}
+                onChange={(e) => setData('password', e.target.value)}
+                error={errors.password}
+              />
+            </section>
+            <FormButton name="login-button" className="button-primary">
+              Login
+            </FormButton>
+            <div>{errors.message && <small className="error">{errors.message}</small>}</div>
+          </form>
+        </article>
+      </main>
     </>
   )
 }
