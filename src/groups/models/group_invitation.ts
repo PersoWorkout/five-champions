@@ -10,6 +10,9 @@ export default class GroupInvitation extends BaseModel {
   declare id: string
 
   @column()
+  declare status: GroupInvitationStatus
+
+  @column()
   declare groupId: string
 
   @column()
@@ -17,9 +20,6 @@ export default class GroupInvitation extends BaseModel {
 
   @column()
   declare senderId: string
-
-  @column()
-  declare status: GroupInvitationStatus
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime

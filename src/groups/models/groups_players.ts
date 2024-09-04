@@ -5,7 +5,7 @@ import type { BelongsTo } from '@adonisjs/lucid/types/relations'
 
 export default class GroupsPlayers extends BaseModel {
   @column({ isPrimary: true })
-  declare group_id: string
+  declare groupId: string
 
   @column({ isPrimary: true })
   declare playerId: string

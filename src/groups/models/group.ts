@@ -2,6 +2,8 @@ import Player from '#src/players/models/players'
 import { BaseModel, belongsTo, column, hasMany } from '@adonisjs/lucid/orm'
 import type { BelongsTo, HasMany } from '@adonisjs/lucid/types/relations'
 import type { DateTime } from 'luxon'
+import GroupInvitation from '#src/groups/models/group_invitation'
+import GroupsPlayers from './groups_players.js'
 
 export default class Group extends BaseModel {
   @column({ isPrimary: true })
@@ -10,8 +12,8 @@ export default class Group extends BaseModel {
   @column()
   declare name: string
 
-  @column()
-  declare creatorId: string
+  @column({ columnName: 'creator_id' })
+  declare playerId: string
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
@@ -22,6 +24,9 @@ export default class Group extends BaseModel {
   @belongsTo(() => Player)
   declare creator: BelongsTo<typeof Player>
 
-  @hasMany(() => Player)
-  declare players: HasMany<typeof Player>
+  @hasMany(() => GroupInvitation)
+  declare groupInvitation: HasMany<typeof GroupInvitation>
+
+  @hasMany(() => GroupsPlayers)
+  declare groupPlayer: HasMany<typeof GroupsPlayers>
 }
