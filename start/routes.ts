@@ -17,6 +17,8 @@ import router from '@adonisjs/core/services/router'
 import { middleware } from './kernel.js'
 import EditPlayerController from '#src/players/controllers/edit_player_controller'
 import LogoutController from '#src/players/controllers/logout_controller'
+import GetGroupsController from '#src/groups/controllers/get_groups_controller'
+import CreateGroupController from '#src/groups/controllers/create_group_controller'
 
 router.on('/').renderInertia('home', { version: 6 }).use(middleware.silent())
 
@@ -32,3 +34,7 @@ router.get('auth/me', [GetCurrentPlayerController, 'render']).use(middleware.aut
 router.put('players/edit', [EditPlayerController, 'handle']).use(middleware.auth())
 
 router.get('/players/all', [AllPlayersController, 'render']).use(middleware.auth())
+
+router.get('/groups/all', [GetGroupsController, 'render']).use(middleware.auth())
+
+router.post('/groups', [CreateGroupController, 'handle'])
