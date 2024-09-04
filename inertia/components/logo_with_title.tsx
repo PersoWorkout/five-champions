@@ -1,3 +1,3 @@
 export function LogoWithTitle() {
-  return <img src="public/assets/logo.png" alt="logo with title" />
+  return <img src="/public/assets/logo.png" alt="logo with title" />
 }
