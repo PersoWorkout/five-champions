@@ -8,6 +8,10 @@ export type GetGroupsType = {
     id: string
     surname: string
   }
+  count: number
+  players: {
+    surname: string
+  }[]
 }
 
 export class GetGroupsPresenter {
@@ -18,11 +22,17 @@ export class GetGroupsPresenter {
           ({
             id: group.id,
             name: group.name,
-            createdAt: group.createdAt.toFormat('dd/MM/yy HH:mm'),
+            createdAt: group.createdAt.toFormat('dd/MM/yy'),
             creator: {
               id: group.creator.id,
               surname: group.creator.surname,
             },
+            count: 10,
+            players: [
+              { surname: 'YaskoShot10' },
+              { surname: 'Sephiroth' },
+              { surname: 'TimotarLeTocard' },
+            ],
           }) as GetGroupsType
       ),
     }
