@@ -1,28 +1,43 @@
-import { HttpContext } from '@adonisjs/core/http'
-import Group from '../models/group.js'
-import Player from '#src/players/models/players'
-import db from '@adonisjs/lucid/services/db'
-import GroupsPlayers from '../models/groups_players.js'
+import { GroupsPlayersService } from '../services/groups_players_service.js'
+import { GroupService } from '#src/groups/services/group_service'
+import { inject } from '@adonisjs/core'
+import vine from '@vinejs/vine'
+import type { HttpContext } from '@adonisjs/core/http'
 
+@inject()
 export default class CreateGroupController {
-  async handle({ request, response }: HttpContext) {
-    var { name } = request.all()
+  constructor(
+    private service: GroupService,
+    private groupsPlayersService: GroupsPlayersService
+  ) {}
 
-    const player = await Player.findBy({ email: 'yaskoshot@example.com' })
-    if (!player) {
-      return response.notFound()
+  #validator = vine.compile(
+    vine.object({
+      name: vine.string().trim(),
+    })
+  )
+
+  render({ inertia }: HttpContext) {
+    return inertia.render('groups/create')
+  }
+
+  async handle({ request, auth, response, session }: HttpContext) {
+    const player = auth.user!
+    var { name } = await request.validateUsing(this.#validator)
+
+    const group = await this.service.create(name, player.id)
+    if (!group) {
+      session.flash('errors', { messages: 'An error occured' })
+      return response.redirect().back()
     }
 
-    const group = await Group.create({ name, playerId: player.id })
-    await group.save()
+    const groupPlayer = await this.groupsPlayersService.create(group.id, player.id)
+    if (!groupPlayer) {
+      session.flash('errors', { messages: 'An error occured' })
+      return response.redirect().back()
+    }
 
-    const groupPlayer = await GroupsPlayers.create({ groupId: group.id, playerId: player.id })
-    await groupPlayer.save()
-
-    const groupsCount = await db.from('groups').count('* as total')
-
-    console.log(groupsCount[0].total)
-
-    return response.ok({ data: { group, groupPlayer } })
+    //should be redirect to details page
+    return response.redirect().toPath('/groups/all')
   }
 }

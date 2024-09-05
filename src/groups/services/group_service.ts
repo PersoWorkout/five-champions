@@ -6,10 +6,14 @@ export class GroupService {
   constructor(private repository: GroupRepository) {}
 
   getAll(playerId: string) {
-    return this.repository.getAllByPlayer(playerId)
+    return this.repository.getGroupsByPlayer(playerId)
   }
 
   getById(playerId: string, groupId: string) {
     return this.repository.getById(playerId, groupId)
+  }
+
+  create(name: string, playerId: string) {
+    return this.repository.create({ name, playerId })
   }
 }

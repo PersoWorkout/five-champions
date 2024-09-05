@@ -1,4 +1,4 @@
-import Group from '#src/groups/models/group'
+import type Group from '#src/groups/models/group'
 
 export type GetGroupsType = {
   id: string
@@ -10,6 +10,7 @@ export type GetGroupsType = {
   }
   count: number
   players: {
+    id: string
     surname: string
   }[]
 }
@@ -24,15 +25,14 @@ export class GetGroupsPresenter {
             name: group.name,
             createdAt: group.createdAt.toFormat('dd/MM/yy'),
             creator: {
-              id: group.creator.id,
-              surname: group.creator.surname,
+              id: group.creator?.id,
+              surname: group.creator?.surname,
             },
-            count: 10,
-            players: [
-              { surname: 'YaskoShot10' },
-              { surname: 'Sephiroth' },
-              { surname: 'TimotarLeTocard' },
-            ],
+            count: group.groupPlayer.length,
+            players: group.groupPlayer.map((el) => ({
+              id: el.player.id,
+              surname: el.player.surname,
+            })),
           }) as GetGroupsType
       ),
     }
