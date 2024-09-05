@@ -3,14 +3,7 @@ import { Head, useForm, usePage } from '@inertiajs/react'
 import { FormInputGroup } from '~/components/form/input_group'
 import { FormButton } from '~/components/form/ui/button'
 
-interface MePageProps {
-  id: number
-  surname: string
-  email: string
-  guest: boolean
-}
-
-export default function MePage(props: MePageProps) {
+export default function MePage() {
   const page = usePage()
 
   const user = page.props.user as Player

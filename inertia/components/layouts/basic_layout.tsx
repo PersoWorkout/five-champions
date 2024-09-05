@@ -29,7 +29,7 @@ export function BasicLayout({ children }: Props) {
 }
 
 const LoginLink = () => (
-  <Link href="auth/login" method="get" className="login-link">
+  <Link href="/auth/login" method="get" as="button" className="login-link">
     Login
   </Link>
 )

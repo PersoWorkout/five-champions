@@ -12,7 +12,7 @@ export function UserDrawer() {
         <div className="user-dropdown-content">
           <Link href="/auth/me">Account</Link>
           <Link href="/auth/me">My Stats</Link>
-          <Link href="/auth/logout" method="post">
+          <Link href="/auth/logout" method="post" as="button">
             Logout
           </Link>
         </div>
