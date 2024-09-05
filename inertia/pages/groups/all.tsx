@@ -22,11 +22,6 @@ export default function GetAllGroups({ data }: GetAllGroupsProps) {
           </header>
 
           <div className="box-container">
-            <GroupBox key={data[0].id} group={data[0]} />
-            {data.map((group) => (
-              <GroupBox key={group.id} group={group} />
-            ))}
-            <GroupBox key={data[0].id} group={data[0]} />
             {data.map((group) => (
               <GroupBox key={group.id} group={group} />
             ))}
