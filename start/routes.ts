@@ -28,13 +28,18 @@ router.post('/auth/register', [RegisterController, 'handle'])
 router.get('/auth/login', [LoginController, 'render'])
 router.post('/auth/login', [LoginController, 'handle'])
 
-router.post('/auth/logout', [LogoutController, 'handle'])
+router
+  .group(() => {
+    router.get('auth/me', [GetCurrentPlayerController, 'render'])
+    router.post('/auth/logout', [LogoutController, 'handle'])
 
-router.get('auth/me', [GetCurrentPlayerController, 'render']).use(middleware.auth())
-router.put('players/edit', [EditPlayerController, 'handle']).use(middleware.auth())
+    router.get('/groups/all', [GetGroupsController, 'render'])
 
-router.get('/players/all', [AllPlayersController, 'render']).use(middleware.auth())
+    router.get('/groups/create', [CreateGroupController, 'render'])
+    router.post('/groups', [CreateGroupController, 'handle'])
 
-router.get('/groups/all', [GetGroupsController, 'render']).use(middleware.auth())
+    router.put('players/edit', [EditPlayerController, 'handle'])
 
-router.post('/groups', [CreateGroupController, 'handle'])
+    router.get('/players/all', [AllPlayersController, 'render'])
+  })
+  .use(middleware.auth())
