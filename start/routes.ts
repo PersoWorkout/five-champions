@@ -19,6 +19,7 @@ import EditPlayerController from '#src/players/controllers/edit_player_controlle
 import LogoutController from '#src/players/controllers/logout_controller'
 import GetGroupsController from '#src/groups/controllers/get_groups_controller'
 import CreateGroupController from '#src/groups/controllers/create_group_controller'
+import GetGroupByIdController from '#src/groups/controllers/get_group_by_id_controller'
 
 router.on('/').renderInertia('home', { version: 6 }).use(middleware.silent())
 
@@ -33,13 +34,15 @@ router
     router.get('auth/me', [GetCurrentPlayerController, 'render'])
     router.post('/auth/logout', [LogoutController, 'handle'])
 
+    router.put('players/edit', [EditPlayerController, 'handle'])
+
+    router.get('/players/all', [AllPlayersController, 'render'])
+
     router.get('/groups/all', [GetGroupsController, 'render'])
 
     router.get('/groups/create', [CreateGroupController, 'render'])
     router.post('/groups', [CreateGroupController, 'handle'])
 
-    router.put('players/edit', [EditPlayerController, 'handle'])
-
-    router.get('/players/all', [AllPlayersController, 'render'])
+    router.get('/groups/:id', [GetGroupByIdController, 'render'])
   })
   .use(middleware.auth())

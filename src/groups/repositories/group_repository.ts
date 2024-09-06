@@ -23,7 +23,20 @@ export default class GroupRepository {
   }
 
   getById(playerId: string, groupId: string) {
-    return Group.findBy({ playerId, id: groupId })
+    return Group.query()
+      .where({ id: groupId })
+      .preload('groupPlayer', (groupPlayer) => {
+        groupPlayer.where({ playerId })
+      })
+      .preload('creator', (creator) => {
+        creator.select(['id', 'surname'])
+      })
+      .preload('groupPlayer', (groupPlayer) => {
+        groupPlayer.preload('player', (player) => {
+          player.select(['id', 'surname'])
+        })
+      })
+      .first()
   }
 
   async create(payload: CreateGroupDTO) {
