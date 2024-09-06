@@ -34,7 +34,7 @@ export default function GroupDetailsPage({ group }: GetGroupByIdType) {
               <header>
                 <h5>Joueurs: </h5>
                 <div>
-                  <Link href={`/groups/${group.id}/invitiation`} method="post" as="button">
+                  <Link href={`/groups/${group.id}/invitations/create`} method="get">
                     Invite New User
                   </Link>
                 </div>

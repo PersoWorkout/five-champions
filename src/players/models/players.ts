@@ -1,7 +1,7 @@
 import { BaseModel, column, hasMany } from '@adonisjs/lucid/orm'
 import { compose } from '@adonisjs/core/helpers'
 import { DateTime } from 'luxon'
-import GroupInvitation from '#src/groups/models/group_invitation'
+import GroupsInvitations from '#src/groups/models/groups_invitations'
 import hash from '@adonisjs/core/services/hash'
 import { withAuthFinder } from '@adonisjs/auth/mixins/lucid'
 import type { HasMany } from '@adonisjs/lucid/types/relations'
@@ -33,6 +33,6 @@ export default class Player extends compose(BaseModel, AuthFinder) {
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime | null
 
-  @hasMany(() => GroupInvitation)
-  declare groupInvitation: HasMany<typeof GroupInvitation>
+  @hasMany(() => GroupsInvitations)
+  declare groupInvitation: HasMany<typeof GroupsInvitations>
 }

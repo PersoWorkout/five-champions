@@ -10,7 +10,7 @@ export class GroupService {
   }
 
   getById(playerId: string, groupId: string) {
-    return this.repository.getById(playerId, groupId)
+    return this.repository.getDetails(playerId, groupId)
   }
 
   create(name: string, playerId: string) {

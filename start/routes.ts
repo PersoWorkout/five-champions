@@ -20,6 +20,7 @@ import LogoutController from '#src/players/controllers/logout_controller'
 import GetGroupsController from '#src/groups/controllers/get_groups_controller'
 import CreateGroupController from '#src/groups/controllers/create_group_controller'
 import GetGroupByIdController from '#src/groups/controllers/get_group_by_id_controller'
+import CreateGroupInvitationController from '#src/groups/controllers/create_group_invitation_controller'
 
 router.on('/').renderInertia('home', { version: 6 }).use(middleware.silent())
 
@@ -44,5 +45,11 @@ router
     router.post('/groups', [CreateGroupController, 'handle'])
 
     router.get('/groups/:id', [GetGroupByIdController, 'render'])
+
+    router.get('/groups/:id/invitations/create', [CreateGroupInvitationController, 'render'])
+    router.post('/groups/:groupId/invitations/:playerId', [
+      CreateGroupInvitationController,
+      'handle',
+    ])
   })
   .use(middleware.auth())

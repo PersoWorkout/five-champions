@@ -13,7 +13,6 @@ export default class GetGroupByIdController {
   async render({ auth, request, response, inertia }: HttpContext) {
     const playerId = auth.user!.id
     const groupId = request.param('id')
-    console.log(groupId)
 
     const group = await this.service.getById(playerId, groupId)
     if (!group) {

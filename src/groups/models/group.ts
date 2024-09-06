@@ -2,7 +2,7 @@ import Player from '#src/players/models/players'
 import { BaseModel, belongsTo, column, hasMany } from '@adonisjs/lucid/orm'
 import type { BelongsTo, HasMany } from '@adonisjs/lucid/types/relations'
 import type { DateTime } from 'luxon'
-import GroupInvitation from '#src/groups/models/group_invitation'
+import GroupsInvitations from '#src/groups/models/groups_invitations'
 import GroupsPlayers from './groups_players.js'
 
 export default class Group extends BaseModel {
@@ -24,8 +24,8 @@ export default class Group extends BaseModel {
   @belongsTo(() => Player)
   declare creator: BelongsTo<typeof Player>
 
-  @hasMany(() => GroupInvitation)
-  declare groupInvitation: HasMany<typeof GroupInvitation>
+  @hasMany(() => GroupsInvitations)
+  declare groupInvitation: HasMany<typeof GroupsInvitations>
 
   @hasMany(() => GroupsPlayers)
   declare groupPlayer: HasMany<typeof GroupsPlayers>

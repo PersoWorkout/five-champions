@@ -5,7 +5,7 @@ import Group from '#src/groups/models/group'
 import type { BelongsTo } from '@adonisjs/lucid/types/relations'
 import Player from '#src/players/models/players'
 
-export default class GroupInvitation extends BaseModel {
+export default class GroupsInvitations extends BaseModel {
   @column({ isPrimary: true })
   declare id: string
 

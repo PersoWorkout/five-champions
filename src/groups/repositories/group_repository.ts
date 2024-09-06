@@ -22,7 +22,7 @@ export default class GroupRepository {
       .orderBy('createdAt')
   }
 
-  getById(playerId: string, groupId: string) {
+  getDetails(playerId: string, groupId: string) {
     return Group.query()
       .where({ id: groupId })
       .preload('groupPlayer', (groupPlayer) => {
@@ -37,6 +37,10 @@ export default class GroupRepository {
         })
       })
       .first()
+  }
+
+  getById(id: string) {
+    return Group.findBy({ id })
   }
 
   async create(payload: CreateGroupDTO) {
