@@ -24,7 +24,7 @@ export class GroupInvitationRepository {
         'id',
         db
           .from('groups_invitations')
-          .where({ group_Id: groupId })
+          .where({ group_id: groupId })
           .whereRaw(
             `(status = ${GroupInvitationStatus.Accepted} or status = ${GroupInvitationStatus.Pending})`
           )

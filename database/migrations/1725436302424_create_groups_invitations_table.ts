@@ -5,11 +5,11 @@ export default class extends BaseSchema {
 
   async up() {
     this.schema.createTable(this.tableName, (table) => {
-      table.increments('id').primary()
+      table.uuid('id').primary().defaultTo(this.db.rawQuery('gen_random_uuid()').knexQuery)
       table.integer('status')
-      table.integer('group_id').references('id').inTable('groups')
-      table.integer('player_id').references('id').inTable('players')
-      table.integer('sender_id').references('id').inTable('players')
+      table.uuid('group_id').references('id').inTable('groups')
+      table.uuid('player_id').references('id').inTable('players')
+      table.uuid('sender_id').references('id').inTable('players')
 
       table.timestamp('created_at')
       table.timestamp('updated_at')
