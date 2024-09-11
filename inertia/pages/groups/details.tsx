@@ -1,5 +1,6 @@
 import { GetGroupByIdType } from '#src/groups/presenter/get_group_by_id_presenter'
 import { Head, Link } from '@inertiajs/react'
+import { GroupPlayerItem } from '~/components/groups/group_player_item'
 import { BasicLayout } from '~/components/layouts/basic_layout'
 
 export default function GroupDetailsPage({ group }: GetGroupByIdType) {
@@ -42,9 +43,7 @@ export default function GroupDetailsPage({ group }: GetGroupByIdType) {
               <figure>
                 <ul>
                   {group.players.map((player) => (
-                    <li key={player.id}>
-                      {player.surname}({player.status})
-                    </li>
+                    <GroupPlayerItem key={player.id} groupId={group.id} player={player} />
                   ))}
                 </ul>
               </figure>

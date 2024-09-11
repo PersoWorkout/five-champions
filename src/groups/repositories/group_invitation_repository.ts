@@ -14,6 +14,14 @@ export class GroupInvitationRepository {
     return GroupsInvitations.findManyBy({ playerId })
   }
 
+  getWaintingGroupInvitations(playerId: string, groupId: string) {
+    return GroupsInvitations.query()
+      .where({ group_id: groupId })
+      .andWhere({ player_id: playerId })
+      .andWhere({ status: GroupInvitationStatus.Pending })
+      .first()
+  }
+
   getByPlayerAndGroup(playerId: string, groupId: string) {
     return GroupsInvitations.findBy({ groupId, playerId })
   }
@@ -51,5 +59,9 @@ export class GroupInvitationRepository {
 
   updateStatus(invitation: GroupsInvitations, status: GroupInvitationStatus) {
     return invitation.merge({ status }).save()
+  }
+
+  delete(invitation: GroupsInvitations) {
+    return invitation.delete()
   }
 }

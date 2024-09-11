@@ -1,4 +1,6 @@
+import { GroupInvitationStatus } from '#src/groups/enums/group_invitation_status'
 import Group from '#src/groups/models/group'
+import db from '@adonisjs/lucid/services/db'
 
 interface CreateGroupDTO {
   name: string
@@ -8,9 +10,15 @@ interface CreateGroupDTO {
 export default class GroupRepository {
   getGroupsByPlayer(playerId: string) {
     return Group.query()
-      .preload('groupPlayer', (groupPlayer) => {
-        groupPlayer.where({ playerId })
-      })
+      .whereIn('id', db.from('groups_players').where({ player_id: playerId }).select('group_id'))
+      .orWhereIn(
+        'id',
+        db
+          .from('groups_invitations')
+          .where({ player_id: playerId })
+          .andWhereNot({ status: GroupInvitationStatus.Rejected })
+          .select('group_id')
+      )
       .preload('groupPlayer', (groupPlayer) => {
         groupPlayer.preload('player', (player) => {
           player.select(['id', 'surname'])
@@ -39,7 +47,7 @@ export default class GroupRepository {
       .preload('groupInvitation', (groupInvitation) => {
         groupInvitation
           .where({ groupId })
-          .andWhereNot({ status: 2 })
+          .andWhere({ status: GroupInvitationStatus.Pending })
           .preload('player', (player) => {
             player.select(['id', 'surname'])
           })

@@ -13,7 +13,7 @@ export type GetGroupByIdType = {
     players: Array<{
       id: string
       surname: string
-      status: string
+      status: number
     }>
   }
 }
@@ -33,13 +33,13 @@ export class GetGroupByIdPresenter {
           .map((groupPlayer) => ({
             id: groupPlayer.playerId,
             surname: groupPlayer.player.surname,
-            status: GroupInvitationStatus[GroupInvitationStatus.Accepted].toString(),
+            status: GroupInvitationStatus.Accepted,
           }))
           .concat(
             group.groupInvitation.map((groupInvitation) => ({
               id: groupInvitation.playerId,
               surname: groupInvitation.player.surname,
-              status: GroupInvitationStatus[groupInvitation.status].toString(),
+              status: groupInvitation.status,
             }))
           ),
       },

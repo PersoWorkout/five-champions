@@ -19,8 +19,6 @@ export default class GetGroupByIdController {
       return response.notFound()
     }
 
-    console.log(group.groupInvitation)
-
     return inertia.render('groups/details', this.presenter.toJson(group))
   }
 }

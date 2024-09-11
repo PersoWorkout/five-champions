@@ -24,11 +24,13 @@ export class GroupInvitationService {
 
     const group = await this.groupRepository.getById(groupId)
     if (!group) {
+      console.log('Group not found')
       return null
     }
 
-    const existingEntry = await this.repository.getByPlayerAndGroup(playerId, groupId)
+    const existingEntry = await this.repository.getWaintingGroupInvitations(playerId, groupId)
     if (existingEntry) {
+      console.log('Existing entry')
       return null
     }
 
@@ -37,8 +39,8 @@ export class GroupInvitationService {
     return groupInvitation
   }
 
-  async updateStatus(id: string, status: GroupInvitationStatus) {
-    const invitation = await this.repository.getById(id)
+  async updateStatus(playerId: string, groupId: string, status: GroupInvitationStatus) {
+    const invitation = await this.repository.getByPlayerAndGroup(playerId, groupId)
     if (!invitation) {
       return null
     }
@@ -48,6 +50,17 @@ export class GroupInvitationService {
     if (status === GroupInvitationStatus.Accepted) {
       this.groupPlayersService.create(invitation.groupId, invitation.playerId)
     }
+
+    return result
+  }
+
+  async delete(id: string) {
+    const invitation = await this.repository.getById(id)
+    if (!invitation) {
+      return null
+    }
+
+    const result = await this.repository.delete(invitation)
 
     return result
   }

@@ -12,16 +12,19 @@ const LoginController = () => import('#src/players/controllers/login_controller'
 const AllPlayersController = () => import('#src/players/controllers/all_players_controller')
 const GetCurrentPlayerController = () =>
   import('#src/players/controllers/get_current_player_controller')
-
+const RejectGroupInvitationController = () =>
+  import('#src/groups/controllers/reject_group_invitation_controller')
+const AcceptGroupInvitationController = () =>
+  import('#src/groups/controllers/accept_group_invitation_controller')
+const EditPlayerController = () => import('#src/players/controllers/edit_player_controller')
+const LogoutController = () => import('#src/players/controllers/logout_controller')
+const GetGroupsController = () => import('#src/groups/controllers/get_groups_controller')
+const CreateGroupController = () => import('#src/groups/controllers/create_group_controller')
+const GetGroupByIdController = () => import('#src/groups/controllers/get_group_by_id_controller')
+const CreateGroupInvitationController = () =>
+  import('#src/groups/controllers/create_group_invitation_controller')
 import router from '@adonisjs/core/services/router'
 import { middleware } from './kernel.js'
-import EditPlayerController from '#src/players/controllers/edit_player_controller'
-import LogoutController from '#src/players/controllers/logout_controller'
-import GetGroupsController from '#src/groups/controllers/get_groups_controller'
-import CreateGroupController from '#src/groups/controllers/create_group_controller'
-import GetGroupByIdController from '#src/groups/controllers/get_group_by_id_controller'
-import CreateGroupInvitationController from '#src/groups/controllers/create_group_invitation_controller'
-
 router.on('/').renderInertia('home', { version: 6 }).use(middleware.silent())
 
 router.get('/auth/register', [RegisterController, 'render'])
@@ -51,5 +54,9 @@ router
       CreateGroupInvitationController,
       'handle',
     ])
+
+    router.put('/groups/:groupId/invitations/accept', [AcceptGroupInvitationController, 'handle'])
+
+    router.put('/groups/:groupId/invitations/reject', [RejectGroupInvitationController, 'handle'])
   })
   .use(middleware.auth())
