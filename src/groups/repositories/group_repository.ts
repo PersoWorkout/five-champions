@@ -36,6 +36,14 @@ export default class GroupRepository {
           player.select(['id', 'surname'])
         })
       })
+      .preload('groupInvitation', (groupInvitation) => {
+        groupInvitation
+          .where({ groupId })
+          .andWhereNot({ status: 2 })
+          .preload('player', (player) => {
+            player.select(['id', 'surname'])
+          })
+      })
       .first()
   }
 

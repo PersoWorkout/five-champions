@@ -42,7 +42,9 @@ export default function GroupDetailsPage({ group }: GetGroupByIdType) {
               <figure>
                 <ul>
                   {group.players.map((player) => (
-                    <li key={player.id}>{player.surname}</li>
+                    <li key={player.id}>
+                      {player.surname}({player.status})
+                    </li>
                   ))}
                 </ul>
               </figure>
