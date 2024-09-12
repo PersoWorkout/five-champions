@@ -33,9 +33,7 @@ export class GroupInvitationRepository {
         db
           .from('groups_invitations')
           .where({ group_id: groupId })
-          .whereRaw(
-            `(status = ${GroupInvitationStatus.Accepted} or status = ${GroupInvitationStatus.Pending})`
-          )
+          .andWhere({ status: GroupInvitationStatus.Pending })
           .select('player_id')
       )
       .andWhereNotIn(

@@ -43,7 +43,12 @@ export default function GroupDetailsPage({ group }: GetGroupByIdType) {
               <figure>
                 <ul>
                   {group.players.map((player) => (
-                    <GroupPlayerItem key={player.id} groupId={group.id} player={player} />
+                    <GroupPlayerItem
+                      key={player.id}
+                      groupId={group.id}
+                      invitationId={player.invitationId}
+                      player={player}
+                    />
                   ))}
                 </ul>
               </figure>

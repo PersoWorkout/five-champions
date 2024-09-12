@@ -10,18 +10,18 @@ export default class RejectGroupInvitationController {
   async handle({ auth, request, response }: HttpContext) {
     const playerId = auth.user!.id
     const groupId = request.param('groupId')
+    const invitationId = request.param('invitationId')
 
     const groupInvitation = await this.service.updateStatus(
       playerId,
       groupId,
+      invitationId,
       GroupInvitationStatus.Rejected
     )
 
     if (!groupInvitation) {
       return response.notFound()
     }
-
-    await this.service.delete(groupInvitation.id)
 
     return response.redirect().toPath('/groups/all')
   }

@@ -39,9 +39,14 @@ export class GroupInvitationService {
     return groupInvitation
   }
 
-  async updateStatus(playerId: string, groupId: string, status: GroupInvitationStatus) {
-    const invitation = await this.repository.getByPlayerAndGroup(playerId, groupId)
-    if (!invitation) {
+  async updateStatus(
+    playerId: string,
+    groupId: string,
+    invitationId: string,
+    status: GroupInvitationStatus
+  ) {
+    const invitation = await this.repository.getById(invitationId)
+    if (!invitation || invitation.playerId !== playerId || invitation.groupId !== groupId) {
       return null
     }
 

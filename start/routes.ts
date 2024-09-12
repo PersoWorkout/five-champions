@@ -55,8 +55,14 @@ router
       'handle',
     ])
 
-    router.put('/groups/:groupId/invitations/accept', [AcceptGroupInvitationController, 'handle'])
+    router.put('/groups/:groupId/invitations/:invitationId/accept', [
+      AcceptGroupInvitationController,
+      'handle',
+    ])
 
-    router.put('/groups/:groupId/invitations/reject', [RejectGroupInvitationController, 'handle'])
+    router.put('/groups/:groupId/invitations/:invitationId/reject', [
+      RejectGroupInvitationController,
+      'handle',
+    ])
   })
   .use(middleware.auth())

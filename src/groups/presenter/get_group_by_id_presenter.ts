@@ -14,6 +14,7 @@ export type GetGroupByIdType = {
       id: string
       surname: string
       status: number
+      invitationId: string | null
     }>
   }
 }
@@ -34,12 +35,14 @@ export class GetGroupByIdPresenter {
             id: groupPlayer.playerId,
             surname: groupPlayer.player.surname,
             status: GroupInvitationStatus.Accepted,
+            invitationId: null as string | null,
           }))
           .concat(
             group.groupInvitation.map((groupInvitation) => ({
               id: groupInvitation.playerId,
               surname: groupInvitation.player.surname,
               status: groupInvitation.status,
+              invitationId: groupInvitation.id,
             }))
           ),
       },

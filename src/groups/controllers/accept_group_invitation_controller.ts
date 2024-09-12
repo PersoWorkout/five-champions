@@ -10,10 +10,12 @@ export default class AcceptGroupInvitationController {
   async handle({ auth, request, response }: HttpContext) {
     const playerId = auth.user!.id
     const groupId = request.param('groupId')
+    const invitationId = request.param('invitationId')
 
     const groupInvitation = await this.service.updateStatus(
       playerId,
       groupId,
+      invitationId,
       GroupInvitationStatus.Accepted
     )
 

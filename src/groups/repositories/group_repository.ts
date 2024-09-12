@@ -16,7 +16,7 @@ export default class GroupRepository {
         db
           .from('groups_invitations')
           .where({ player_id: playerId })
-          .andWhereNot({ status: GroupInvitationStatus.Rejected })
+          .andWhere({ status: GroupInvitationStatus.Pending })
           .select('group_id')
       )
       .preload('groupPlayer', (groupPlayer) => {
