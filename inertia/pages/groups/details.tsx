@@ -1,9 +1,13 @@
 import { GetGroupByIdType } from '#src/groups/presenter/get_group_by_id_presenter'
-import { Head, Link } from '@inertiajs/react'
+import Player from '#src/players/models/players'
+import { Head, Link, usePage } from '@inertiajs/react'
 import { GroupPlayerItem } from '~/components/groups/group_player_item'
 import { BasicLayout } from '~/components/layouts/basic_layout'
 
 export default function GroupDetailsPage({ group }: GetGroupByIdType) {
+  const page = usePage()
+  const currentPlayer = page.props.user as Player
+
   return (
     <>
       <Head title="Group detail" />
@@ -13,6 +17,14 @@ export default function GroupDetailsPage({ group }: GetGroupByIdType) {
           <article className="card">
             <header>
               <h2>Group: {group.name}</h2>
+              <Link
+                href={`/groups/${group.id}/players/${currentPlayer.id}`}
+                method="delete"
+                as="button"
+                className="button-secondary"
+              >
+                Leave
+              </Link>
             </header>
             <section>
               <h5>Informations</h5>

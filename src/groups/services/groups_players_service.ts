@@ -16,4 +16,13 @@ export class GroupsPlayersService {
 
     return this.repository.create(groupId, playerId)
   }
+
+  async delete(groupId: string, playerId: string) {
+    const groupPlayer = await this.repository.getByPlayerAndGroup(groupId, playerId)
+    if (!groupPlayer) {
+      return null
+    }
+
+    return this.repository.delete(groupPlayer)
+  }
 }
