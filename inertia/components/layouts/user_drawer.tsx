@@ -11,6 +11,7 @@ export function UserDrawer() {
         <summary>{user?.surname}</summary>
         <div className="user-dropdown-content">
           <Link href="/auth/me">Account</Link>
+          <Link href="/groups/all">Groups</Link>
           <Link href="/auth/me">My Stats</Link>
           <Link href="/auth/logout" method="post" as="button">
             Logout
