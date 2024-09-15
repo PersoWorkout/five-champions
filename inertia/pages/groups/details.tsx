@@ -47,7 +47,12 @@ export default function GroupDetailsPage({ group }: GetGroupByIdType) {
               <header>
                 <h5>Joueurs: </h5>
                 <div>
-                  <Link href={`/groups/${group.id}/invitations/create`} method="get">
+                  <Link
+                    href={`/groups/${group.id}/invitations/create`}
+                    method="get"
+                    as="button"
+                    className="button-secondary"
+                  >
                     Invite New User
                   </Link>
                 </div>
@@ -64,6 +69,21 @@ export default function GroupDetailsPage({ group }: GetGroupByIdType) {
                   ))}
                 </ul>
               </figure>
+            </section>
+            <section>
+              <header>
+                <h5>Saisons: </h5>
+                <div>
+                  <Link
+                    href={`/groups/${group.id}/seasons/create`}
+                    method="get"
+                    as="button"
+                    className="button-secondary"
+                  >
+                    Create Season
+                  </Link>
+                </div>
+              </header>
             </section>
           </article>
         </main>

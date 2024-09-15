@@ -25,6 +25,7 @@ const CreateGroupInvitationController = () =>
   import('#src/groups/controllers/create_group_invitation_controller')
 import router from '@adonisjs/core/services/router'
 import { middleware } from './kernel.js'
+const CreateSeasonController = () => import('#src/seasons/controllers/create_season_controller')
 const DeleteGroupPlayerController = () =>
   import('#src/groups/controllers/delete_group_player_controller')
 router.on('/').renderInertia('home', { version: 6 }).use(middleware.silent())
@@ -68,5 +69,8 @@ router
     ])
 
     router.delete('/groups/:groupId/players/:playerId', [DeleteGroupPlayerController, 'handle'])
+
+    router.get('/groups/:groupId/seasons/create', [CreateSeasonController, 'render'])
+    router.post('/groups/:groupId/seasons', [CreateSeasonController, 'handle'])
   })
   .use(middleware.auth())

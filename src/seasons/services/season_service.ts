@@ -12,7 +12,7 @@ export class SeasonService {
   ) {}
 
   async getAllByGroup(groupId: string, playerId: string) {
-    const exist = await this.groupPlayerRepository.getByPlayerAndGroup(playerId, groupId)
+    const exist = await this.groupPlayerRepository.getByPlayerAndGroup(groupId, playerId)
     if (!exist) {
       return null
     }
@@ -25,7 +25,7 @@ export class SeasonService {
       return null
     }
 
-    const exist = await this.groupPlayerRepository.getByPlayerAndGroup(playerId, season.groupId)
+    const exist = await this.groupPlayerRepository.getByPlayerAndGroup(season.groupId, playerId)
     if (!exist) {
       return null
     }
@@ -34,12 +34,13 @@ export class SeasonService {
   }
 
   async create(payload: CreateSeasonDTO, playerId: string) {
-    const exist = await this.groupPlayerRepository.getByPlayerAndGroup(playerId, payload.groupId)
+    const exist = await this.groupPlayerRepository.getByPlayerAndGroup(payload.groupId, playerId)
     if (!exist) {
+      console.log('unauthorized')
       return null
     }
 
-    return this.repository.create(payload)
+    return await this.repository.create(payload)
   }
 
   async update(id: string, payload: UpdateSeasonDTO, playerId: string) {
@@ -48,7 +49,7 @@ export class SeasonService {
       return null
     }
 
-    const exist = await this.groupPlayerRepository.getByPlayerAndGroup(playerId, season.groupId)
+    const exist = await this.groupPlayerRepository.getByPlayerAndGroup(season.groupId, playerId)
     if (!exist) {
       return null
     }
@@ -62,7 +63,7 @@ export class SeasonService {
       return null
     }
 
-    const exist = await this.groupPlayerRepository.getByPlayerAndGroup(playerId, season.groupId)
+    const exist = await this.groupPlayerRepository.getByPlayerAndGroup(season.groupId, playerId)
     if (!exist) {
       return null
     }
