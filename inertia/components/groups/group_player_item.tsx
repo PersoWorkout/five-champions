@@ -4,15 +4,15 @@ import { Link, usePage } from '@inertiajs/react'
 
 interface GroupPlayerItemProps {
   groupId: string
-  invitationId: string | null
   player: {
     id: string
     surname: string
     status: number
+    invitationId: string | null
   }
 }
 
-export function GroupPlayerItem({ groupId, invitationId, player }: GroupPlayerItemProps) {
+export function GroupPlayerItem({ groupId, player }: GroupPlayerItemProps) {
   const page = usePage().props
   const currentPlayer = page.user as Player
 
@@ -23,7 +23,7 @@ export function GroupPlayerItem({ groupId, invitationId, player }: GroupPlayerIt
         {player.status === GroupInvitationStatus.Pending && currentPlayer.id === player.id ? (
           <>
             <Link
-              href={`/groups/${groupId}/invitations/${invitationId}/accept`}
+              href={`/groups/${groupId}/invitations/${player.invitationId}/accept`}
               method="put"
               as="button"
               className="button-secondary"
@@ -31,7 +31,7 @@ export function GroupPlayerItem({ groupId, invitationId, player }: GroupPlayerIt
               Accept
             </Link>
             <Link
-              href={`/groups/${groupId}/invitations/${invitationId}/reject`}
+              href={`/groups/${groupId}/invitations/${player.invitationId}/reject`}
               method="put"
               as="button"
               className="button-secondary"

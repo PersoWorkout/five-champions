@@ -1,7 +1,8 @@
 import { GetGroupByIdType } from '#src/groups/presenter/get_group_by_id_presenter'
 import Player from '#src/players/models/players'
 import { Head, Link, usePage } from '@inertiajs/react'
-import { GroupPlayerItem } from '~/components/groups/group_player_item'
+import { GroupPlayersContainer } from '~/components/groups/group_players_container'
+import { SeasonContainer } from '~/components/groups/season_container'
 import { BasicLayout } from '~/components/layouts/basic_layout'
 
 export default function GroupDetailsPage({ group }: GetGroupByIdType) {
@@ -43,55 +44,8 @@ export default function GroupDetailsPage({ group }: GetGroupByIdType) {
                 </div>
               </figure>
             </section>
-            <section>
-              <header>
-                <h5>Joueurs: </h5>
-                <div>
-                  <Link
-                    href={`/groups/${group.id}/invitations/create`}
-                    method="get"
-                    as="button"
-                    className="button-secondary"
-                  >
-                    Invite New User
-                  </Link>
-                </div>
-              </header>
-              <figure>
-                <ul>
-                  {group.players.map((player) => (
-                    <GroupPlayerItem
-                      key={player.id}
-                      groupId={group.id}
-                      invitationId={player.invitationId}
-                      player={player}
-                    />
-                  ))}
-                </ul>
-              </figure>
-            </section>
-            <section>
-              <header>
-                <h5>Saisons: </h5>
-                <div>
-                  <Link
-                    href={`/groups/${group.id}/seasons/create`}
-                    method="get"
-                    as="button"
-                    className="button-secondary"
-                  >
-                    Create Season
-                  </Link>
-                </div>
-              </header>
-              <figure>
-                <ul>
-                  {group.seasons.map((season) => (
-                    <li key={season.id}>{season.name}</li>
-                  ))}
-                </ul>
-              </figure>
-            </section>
+            <GroupPlayersContainer groupId={group.id} players={group.players} />
+            <SeasonContainer groupId={group.id} seasons={group.seasons} />
           </article>
         </main>
       </BasicLayout>
