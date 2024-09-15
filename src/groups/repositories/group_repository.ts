@@ -52,6 +52,9 @@ export default class GroupRepository {
             player.select(['id', 'surname'])
           })
       })
+      .preload('seasons', (season) => {
+        season.select(['id', 'name', 'closingDate'])
+      })
       .first()
   }
 

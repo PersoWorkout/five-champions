@@ -84,6 +84,13 @@ export default function GroupDetailsPage({ group }: GetGroupByIdType) {
                   </Link>
                 </div>
               </header>
+              <figure>
+                <ul>
+                  {group.seasons.map((season) => (
+                    <li key={season.id}>{season.name}</li>
+                  ))}
+                </ul>
+              </figure>
             </section>
           </article>
         </main>

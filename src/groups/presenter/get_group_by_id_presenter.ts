@@ -16,6 +16,11 @@ export type GetGroupByIdType = {
       status: number
       invitationId: string | null
     }>
+    seasons: Array<{
+      id: string
+      name: string
+      closed: boolean
+    }>
   }
 }
 
@@ -45,6 +50,11 @@ export class GetGroupByIdPresenter {
               invitationId: groupInvitation.id,
             }))
           ),
+        seasons: group.seasons.map((season) => ({
+          id: season.id,
+          name: season.name,
+          closed: season.closingDate ? true : false,
+        })),
       },
     } as GetGroupByIdType
   }
