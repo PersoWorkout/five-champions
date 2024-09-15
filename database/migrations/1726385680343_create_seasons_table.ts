@@ -8,6 +8,7 @@ export default class extends BaseSchema {
       table.uuid('id').primary().defaultTo(this.db.rawQuery('gen_random_uuid()').knexQuery)
       table.string('name').notNullable()
       table.dateTime('closing_date').nullable()
+      table.uuid('group_id').references('id').inTable('groups').notNullable()
 
       table.timestamp('created_at')
       table.timestamp('updated_at')

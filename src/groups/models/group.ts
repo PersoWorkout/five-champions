@@ -4,6 +4,7 @@ import type { BelongsTo, HasMany } from '@adonisjs/lucid/types/relations'
 import type { DateTime } from 'luxon'
 import GroupsInvitations from '#src/groups/models/groups_invitations'
 import GroupsPlayers from './groups_players.js'
+import Season from '#src/seasons/models/season'
 
 export default class Group extends BaseModel {
   @column({ isPrimary: true })
@@ -29,4 +30,7 @@ export default class Group extends BaseModel {
 
   @hasMany(() => GroupsPlayers)
   declare groupPlayer: HasMany<typeof GroupsPlayers>
+
+  @hasMany(() => Season)
+  declare seasons: HasMany<typeof Season>
 }
