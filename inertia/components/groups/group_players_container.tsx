@@ -1,5 +1,6 @@
 import { Link } from '@inertiajs/react'
 import { GroupPlayerItem } from '~/components/groups/group_player_item'
+import { RiUserAddFill } from 'react-icons/ri'
 
 interface Props {
   groupId: string
@@ -22,8 +23,10 @@ export function GroupPlayersContainer({ groupId, players }: Props) {
             method="get"
             as="button"
             className="button-secondary"
+            title="Invite Player"
           >
-            Invite Player
+            Invite
+            <RiUserAddFill />
           </Link>
         </div>
       </header>

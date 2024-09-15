@@ -13,7 +13,7 @@ export function UserDrawer() {
           <Link href="/auth/me">Account</Link>
           <Link href="/groups/all">Groups</Link>
           <Link href="/auth/me">My Stats</Link>
-          <Link href="/auth/logout" method="post" as="button">
+          <Link href="/auth/logout" method="post" as="button" className="button-secondary">
             Logout
           </Link>
         </div>

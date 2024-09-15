@@ -4,6 +4,7 @@ import { Head, Link, usePage } from '@inertiajs/react'
 import { GroupPlayersContainer } from '~/components/groups/group_players_container'
 import { SeasonContainer } from '~/components/groups/season_container'
 import { BasicLayout } from '~/components/layouts/basic_layout'
+import { PiArrowBendDownRightBold } from 'react-icons/pi'
 
 export default function GroupDetailsPage({ group }: GetGroupByIdType) {
   const page = usePage()
@@ -18,17 +19,9 @@ export default function GroupDetailsPage({ group }: GetGroupByIdType) {
           <article className="card">
             <header>
               <h2>Group: {group.name}</h2>
-              <Link
-                href={`/groups/${group.id}/players/${currentPlayer.id}`}
-                method="delete"
-                as="button"
-                className="button-secondary"
-              >
-                Leave
-              </Link>
             </header>
             <section>
-              <h5>Informations</h5>
+              <h5>Informations:</h5>
               <figure>
                 <div>
                   <label>Nom: </label>
@@ -46,6 +39,20 @@ export default function GroupDetailsPage({ group }: GetGroupByIdType) {
             </section>
             <GroupPlayersContainer groupId={group.id} players={group.players} />
             <SeasonContainer groupId={group.id} seasons={group.seasons} />
+            <footer className="card-footer">
+              <div className="card-right-footer-container">
+                <Link
+                  href={`/groups/${group.id}/players/${currentPlayer.id}`}
+                  method="delete"
+                  as="button"
+                  className="button-red"
+                  title="Leave Group"
+                >
+                  <PiArrowBendDownRightBold />
+                  Leave
+                </Link>
+              </div>
+            </footer>
           </article>
         </main>
       </BasicLayout>

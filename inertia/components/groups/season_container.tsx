@@ -1,4 +1,5 @@
 import { Link } from '@inertiajs/react'
+import { RiAddCircleFill } from 'react-icons/ri'
 
 interface Props {
   groupId: string
@@ -19,8 +20,10 @@ export function SeasonContainer({ groupId, seasons }: Props) {
             method="get"
             as="button"
             className="button-secondary"
+            title="Create Season"
           >
-            Create Season
+            Create
+            <RiAddCircleFill />
           </Link>
         </div>
       </header>

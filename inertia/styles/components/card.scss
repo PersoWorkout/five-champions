@@ -44,5 +44,12 @@
     display: flex;
     gap: 12px;
     margin: 16px;
+
+    .card-right-footer-container {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+    }
   }
 }

@@ -75,11 +75,14 @@ h6 {
 
 button {
   height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 5px;
+  border: none;
   font-size: var(--text-base);
   border-radius: var(--radius-s);
-  border: none;
   cursor: pointer;
-  padding: 5px;
 
   &:hover {
     opacity: 80%;
@@ -88,13 +91,23 @@ button {
 
 .button-primary {
   width: 150px;
-  background-color: var(--pastel-pink-900);
+  background-color: var(--purple-300);
   color: var(--white);
 }
 
 .button-secondary {
   min-width: 90px;
   background-color: var(--purple-300);
+  color: var(--white);
+}
+
+.button-icon {
+  background-color: var(--transparent);
+}
+
+.button-red {
+  min-width: 90px;
+  background-color: var(--red);
   color: var(--white);
 }
 

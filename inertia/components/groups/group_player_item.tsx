@@ -1,6 +1,8 @@
 import { GroupInvitationStatus } from '#src/groups/enums/group_invitation_status'
 import Player from '#src/players/models/players'
 import { Link, usePage } from '@inertiajs/react'
+import { MdCancel } from 'react-icons/md'
+import { FaCheckCircle } from 'react-icons/fa'
 
 interface GroupPlayerItemProps {
   groupId: string
@@ -26,17 +28,19 @@ export function GroupPlayerItem({ groupId, player }: GroupPlayerItemProps) {
               href={`/groups/${groupId}/invitations/${player.invitationId}/accept`}
               method="put"
               as="button"
-              className="button-secondary"
+              className="button-icon"
+              title="Accepter"
             >
-              Accept
+              <FaCheckCircle color="green" size={21} />
             </Link>
             <Link
               href={`/groups/${groupId}/invitations/${player.invitationId}/reject`}
               method="put"
               as="button"
-              className="button-secondary"
+              className="button-icon"
+              title="Refuser"
             >
-              Reject
+              <MdCancel color="red" size={25} />
             </Link>
           </>
         ) : (
