@@ -1,4 +1,4 @@
-import { Head, useForm } from '@inertiajs/react'
+import { Head, Link, useForm } from '@inertiajs/react'
 import { FormInputGroup } from '~/components/form/input_group'
 import { FormButton } from '~/components/form/ui/button'
 
@@ -45,9 +45,13 @@ export default function Login() {
                 error={errors.password}
               />
             </section>
-            <FormButton name="login-button" className="button-primary">
-              Login
-            </FormButton>
+            <footer className="card-footer">
+              <FormButton name="login-button" className="button-primary">
+                Login
+              </FormButton>
+              <Link href="/auth/register">Or Register</Link>
+            </footer>
+
             <div>{errors.message && <small className="error">{errors.message}</small>}</div>
           </form>
         </article>

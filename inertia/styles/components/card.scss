@@ -39,4 +39,10 @@
       margin-inline-start: 8px;
     }
   }
+
+  footer.card-footer {
+    display: flex;
+    gap: 12px;
+    margin: 16px;
+  }
 }
