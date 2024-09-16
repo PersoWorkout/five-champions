@@ -30,7 +30,9 @@
     "#config/*": "./config/*.js",
     "#src/players/*": "./src/players/*.js",
     "#src/groups/*": "./src/groups/*.js",
-    "#src/seasons/*": "./src/seasons/*.js"
+    "#src/seasons/*": "./src/seasons/*.js",
+    "#src/matchs/*": "./src/matchs/*.js",
+    "#src/teams/*": "./src/teams/*.js"
   },
   "devDependencies": {
     "@adonisjs/assembler": "^7.7.0",
